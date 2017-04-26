@@ -21,6 +21,7 @@ public class ForgeSceneInit /*: EditorWindow*/ {
 	[MenuItem("Forge/Init")]
 	protected static void InitScene () {
 		InitCamera () ;
+		InitCurssor () ;
 		GameObject root =InitRoot () ;
 		GameObject tp =InitTooltip () ;
 		GameObject menu =InitMenu () ;
@@ -33,13 +34,13 @@ public class ForgeSceneInit /*: EditorWindow*/ {
 
 	protected static Camera InitCamera () {
 		//Scene scene =EditorSceneManager.GetActiveScene () ;
-		if ( Camera.main != null && Camera.main.name != "Forge Camera" )
+		if ( Camera.main != null && Camera.main.name != ForgeConstants.CAMERA )
 			GameObject.DestroyImmediate (Camera.main) ;
 		if ( Camera.main == null ) {
 			string path ="Assets/Toolkit/Utilities/Prefabs/Main Camera.prefab" ;
 			Object obj =AssetDatabase.LoadAssetAtPath<GameObject> (path) as Object ;
 			GameObject cam =GameObject.Instantiate (obj, Vector3.zero, Quaternion.identity) as GameObject ;
-			cam.name ="Forge Camera" ;
+			cam.name =ForgeConstants.CAMERA ;
 		}
 		Camera.main.nearClipPlane =0.1f ;
 		Camera.main.farClipPlane =5000f ;
@@ -58,6 +59,17 @@ public class ForgeSceneInit /*: EditorWindow*/ {
 	}
 
 #if UNITY_EDITOR
+	protected static GameObject InitCurssor () {
+		GameObject cursor =GameObject.Find  (ForgeConstants.CURSORPATH) ;
+		if ( cursor == null ) {
+			string path ="Assets/Toolkit/Input/Prefabs/Cursor.prefab" ;
+			Object obj =AssetDatabase.LoadAssetAtPath<GameObject> (path) as Object ;
+			cursor =GameObject.Instantiate (obj, Vector3.zero, Quaternion.identity) as GameObject ;
+			cursor.name =ForgeConstants.CURSOR ;
+		}
+		return (cursor) ;
+	}
+
 	protected static GameObject InitTooltip () {
 		GameObject tp =GameObject.Find  (ForgeConstants.TOOLTIPPATH) ;
 		if ( tp == null ) {
@@ -177,8 +189,12 @@ public class ForgeSceneInit /*: EditorWindow*/ {
 			|| LayerMask.NameToLayer (ForgeConstants.INTERACTIBLE) == -1
 			|| GameObject.Find  (ForgeConstants.ROOTPATH) == null
 			|| GameObject.Find  (ForgeConstants.MGRPATH) == null
+			|| GameObject.Find  (ForgeConstants.CURSORPATH) == null
+			|| GameObject.Find  (ForgeConstants.MENUPATH) == null
+			|| GameObject.Find  (ForgeConstants.TOOLTIPPATH) == null
 		) ;
 	}
+
 #endif
 
 }
