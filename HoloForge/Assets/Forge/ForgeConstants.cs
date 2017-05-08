@@ -24,6 +24,10 @@ public class ForgeConstants  {
 	public const string MENUITEMS ="Menu Items" ;
 	public const string IGNORERAYCASTTEMS ="Ignore Raycast" ;
 
+	public const string _resourcesPath ="Assets/Resources/" ;
+	public const string _bundlePath ="Assets/Bundles/" ;
+
+
 }
 
 }

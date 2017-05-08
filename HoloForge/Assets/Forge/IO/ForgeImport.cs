@@ -47,6 +47,18 @@ public partial class ForgeImport {
 	[DllImport("UnityLMVTK", CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
 	public static extern int loadSvf (string path, string dbpath) ;
 
+	[DllImport("UnityLMVTK", CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
+	public static extern void unloadSvf (string path) ;
+
+	[DllImport("UnityLMVTK", CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
+	public static extern void setCurrentSvf (string path) ;
+
+	[DllImport("UnityLMVTK", CallingConvention = CallingConvention.Cdecl)]
+	public static extern int getCurrentSvfLength () ;
+
+	[DllImport("UnityLMVTK", CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Ansi)]
+	public static extern void getCurrentSvf (System.Text.StringBuilder json, int len) ;
+
 	[DllImport ("UnityLMVTK", CallingConvention = CallingConvention.Cdecl)]
 	public static extern int instanceTreeLength () ;
 
@@ -97,12 +109,9 @@ public partial class ForgeImport {
 	public delegate bool ProcessedNodesDelegate (BubbleStats stats) ;
 	public static event ProcessedNodesDelegate ProcessedNodes ;
 
-	protected static string _resourcesPath ="Assets/Resources/" ;
-	protected static string _bundlePath ="Assets/Bundles/" ;
 	protected static string _project ="" ;
-
-	public static string _resources { get { return (_resourcesPath + _project) ; } }
-	public static string _bundle { get { return (_bundlePath + _project) ; } }
+	public static string _resources { get { return (ForgeConstants._resourcesPath + _project) ; } }
+	public static string _bundle { get { return (ForgeConstants._bundlePath + _project) ; } }
 	protected static string _svfDir { get; set; }
 
 	public static BubbleStats _stats =new BubbleStats () ;
@@ -118,7 +127,7 @@ public partial class ForgeImport {
 
 		// Check we got a Root object ready
 		GameObject root =ForgeSceneInit.InitRoot () ;
-		root.name =name ;
+		root.name =_project ;
 		_stats.Reset (loadSvf (svf, db)) ;
 		if ( _stats.total == 0 ) {
 			GameObject temp =GameObject.CreatePrimitive (PrimitiveType.Cube) ;
@@ -146,6 +155,10 @@ public partial class ForgeImport {
 			IteratorNodes (child, root) ;
 
 		AutoScale (root, autoScale) ;
+
+		// Create Menu item
+		ForgeSceneInit.CreateMenuItem (_project, svf + ".png", _resources + "/") ;
+
 		return (_stats) ;
 	}
 

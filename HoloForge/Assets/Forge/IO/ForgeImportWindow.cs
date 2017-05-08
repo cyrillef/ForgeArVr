@@ -14,8 +14,6 @@ class ImportBubbleWindow : EditorWindow {
 
 	public string _name ="" ;
 	public bool _autoScale =true ;
-	protected static string _resourcesPath ="Assets/Resources/" ;
-	protected static string _bundlePath ="Assets/Bundles/" ;
 
 	protected string _folder =@"y:\Projects\Hololens\Samples\228114-gatehouse_pubnwd\" ;
 	protected string[] _svf =new string[] { @"0\0.svf" } ;
@@ -142,7 +140,7 @@ class ImportBubbleWindow : EditorWindow {
 	}
 
 	protected void SelectNewDB () {
-		string path =EditorUtility.OpenFilePanel ("Select DB", _folder, "db") ;
+		string path =EditorUtility.OpenFilePanelWithFilters ("Select DB", _folder, new string [] { "DB files", "db,sdb", "All files", "*" }) ;
 		if ( !string.IsNullOrEmpty (path.Trim ()) ) {
 			if ( path.Trim ().Contains (_folder) )
 				_db =path.Trim ().Substring (_folder.Length + 1) ;

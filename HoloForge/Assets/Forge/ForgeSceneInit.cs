@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using System.Reflection;
+using System.IO;
 
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -130,7 +131,7 @@ public class ForgeSceneInit /*: EditorWindow*/ {
 	}
 
 	protected static GameObject InitMenu () {
-		GameObject menu =GameObject.Find  (ForgeConstants.MENUPATH) ;
+		GameObject menu =GameObject.Find (ForgeConstants.MENUPATH) ;
 		if ( menu == null ) {
 			menu =new GameObject (ForgeConstants.MENU, typeof (Billboard)) ;
 			menu.layer =LayerMask.NameToLayer (ForgeConstants.MENUITEMS) ;
@@ -151,6 +152,35 @@ public class ForgeSceneInit /*: EditorWindow*/ {
 			text.alignment =TextAlignment.Left ;
 		}
 		return (menu) ;
+	}
+
+	public static GameObject CreateMenuItem (string label, string img, string resourcePath =ForgeConstants._resourcesPath) {
+		GameObject menu =GameObject.Find (ForgeConstants.MENUPATH) ;
+		if ( menu == null )
+			return (null) ;
+		GameObject icon =GameObject.CreatePrimitive (PrimitiveType.Quad) ;
+		icon.name =label ;
+		icon.transform.parent =menu.transform ;
+		icon.transform.localScale =new Vector3 (.1f, .1f, 1f) ;
+
+		MeshRenderer mr =icon.GetComponent<MeshRenderer> () ;
+		byte [] bytes =File.ReadAllBytes (img.Replace ('/', '\\')) ;
+		//string filename =Path.GetFileName (img) ;
+		string ext =Path.GetExtension (img) ;
+		string assetref =resourcePath + label + ext ;
+		File.WriteAllBytes (assetref, bytes) ;
+		AssetDatabase.Refresh () ;
+		Texture2D tex =AssetDatabase.LoadAssetAtPath<Texture2D> (assetref) ;
+
+		Material mat =new Material (Shader.Find ("Standard")) ;
+		//filename =Path.GetFileNameWithoutExtension (img) ;
+		assetref =resourcePath + label + ".mat" ;
+		AssetDatabase.CreateAsset (mat, assetref) ;
+		mat =AssetDatabase.LoadAssetAtPath<Material> (assetref) ;
+		mat.SetTexture ("_MainTex", tex) ;
+		mr.material =mat ;
+
+		return (icon) ;
 	}
 
 	protected static GameObject InitManagers (GameObject root, GameObject tp, GameObject menu) {
