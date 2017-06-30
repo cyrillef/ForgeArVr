@@ -1,7 +1,7 @@
 ## HoloForge
 youtube:
 
-[![Youtube Demo](holoforge.jpg)](https://youtu.be/3_zwerE90eo)
+[![Youtube Demo](HoloForge.jpg)](https://youtu.be/3_zwerE90eo)
 
 ### Setup
 > Install the following:
