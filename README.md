@@ -1,7 +1,7 @@
 ## HoloForge
 youtube:
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/3_zwerE90eo" frameborder="0" allowfullscreen></iframe>
+[![Youtube Demo](holoforge.jpg)](https://youtu.be/3_zwerE90eo)
 
 ### Setup
 > Install the following:
@@ -19,3 +19,7 @@ youtube:
 ### Video
 > https://www.youtube.com/watch?v=3_zwerE90eo&feature=youtu.be
 
+
+### References
+
+> [github - KeanW/Dancing-Robot](https://github.com/KeanW/Dancing-Robot)
