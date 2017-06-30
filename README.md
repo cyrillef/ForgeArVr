@@ -1,7 +1,7 @@
 ## HoloForge
 youtube:
 
-[![HoloForge.jpg](http://img.youtube.com/vi/3_zwerE90eo/0.jpg)](http://www.youtube.com/watch?v=3_zwerE90eo)
+<iframe width="560" height="315" src="https://www.youtube.com/embed/3_zwerE90eo" frameborder="0" allowfullscreen></iframe>
 
 ### Setup
 > Install the following:
