@@ -3,7 +3,7 @@ Refer to the [HoloForge Blog Post](https://forge.autodesk.com/blog/fitc-building
 
 YouTube:
 
-[![Youtube Demo](HoloForge.jpg)](https://youtu.be/3_zwerE90eo)
+[![Youtube Demo](HoloForge.jpg)](https://www.youtube.com/watch?v=3_zwerE90eo&feature=youtu.be&t=3m42s)
 
 ### Setup
 > Install the following:
