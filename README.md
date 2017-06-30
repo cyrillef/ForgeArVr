@@ -1,5 +1,7 @@
 ## HoloForge
-youtube:
+Refer to the [HoloForge Blog Post](https://forge.autodesk.com/blog/fitc-building-collaboration-service-hololens)
+
+YouTube:
 
 [![Youtube Demo](HoloForge.jpg)](https://youtu.be/3_zwerE90eo)
 
@@ -19,6 +21,7 @@ youtube:
 ### References
 
 > 
+* [HoloForge Blog Post](https://forge.autodesk.com/blog/fitc-building-collaboration-service-hololens)
 * [github - KeanW/Dancing-Robot](https://github.com/KeanW/Dancing-Robot)
 * [Forge for Hololens](https://autodesk-forge.github.io/?ARVR)
 * [Slides](https://www.slideshare.net/Autodesk/holoworld-introduction-to-building-for-hololens)
