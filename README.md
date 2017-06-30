@@ -12,12 +12,8 @@ youtube:
 * [Unity 5.6+](https://store.unity.com/download?ref=personal)
 
 
-> and follow these instructions - [Setup Hololens with Unity]
-(https://blogs.msdn.microsoft.com/uk_faculty_connection/2017/06/11/an-introduction-to-mixed-reality-game-development-with-hololens-and-unity/)
+> and follow these instructions - [Setup Hololens with Unity](https://blogs.msdn.microsoft.com/uk_faculty_connection/2017/06/11/an-introduction-to-mixed-reality-game-development-with-hololens-and-unity/)
 
-
-### Video
-> https://www.youtube.com/watch?v=3_zwerE90eo&feature=youtu.be
 
 
 ### References
