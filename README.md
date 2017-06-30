@@ -18,4 +18,7 @@ youtube:
 
 ### References
 
-> [github - KeanW/Dancing-Robot](https://github.com/KeanW/Dancing-Robot)
+> 
+* [github - KeanW/Dancing-Robot](https://github.com/KeanW/Dancing-Robot)
+* [Forge for Hololens](https://autodesk-forge.github.io/?ARVR)
+* [Slides](https://www.slideshare.net/Autodesk/holoworld-introduction-to-building-for-hololens)
