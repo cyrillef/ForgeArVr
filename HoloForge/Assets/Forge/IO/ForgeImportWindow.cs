@@ -134,8 +134,14 @@ class ImportBubbleWindow : EditorWindow {
 			files [i] =files [i].Trim ().Substring (_folder.Length) ;
 		_svf =files ;
 		files =System.IO.Directory.GetFiles (_folder, "*.db", SearchOption.AllDirectories) ;
-		if ( !string.IsNullOrEmpty (files [0].Trim ()) )
+		if ( files.Length > 0 && !string.IsNullOrEmpty (files [0].Trim ()) ) {
 			_db =files [0].Trim ().Substring (_folder.Length) ;
+		} else {
+			files =System.IO.Directory.GetFiles (_folder, "*.sdb", SearchOption.AllDirectories) ;
+			if ( files.Length > 0 && !string.IsNullOrEmpty (files [0].Trim ()) ) {
+				_db =files [0].Trim ().Substring (_folder.Length) ;
+			}
+		}
 		this.Repaint () ;
 	}
 
@@ -143,7 +149,7 @@ class ImportBubbleWindow : EditorWindow {
 		string path =EditorUtility.OpenFilePanelWithFilters ("Select DB", _folder, new string [] { "DB files", "db,sdb", "All files", "*" }) ;
 		if ( !string.IsNullOrEmpty (path.Trim ()) ) {
 			if ( path.Trim ().Contains (_folder) )
-				_db =path.Trim ().Substring (_folder.Length + 1) ;
+				_db =path.Trim ().Substring (_folder.Length) ;
 			else
 				_db =path.Trim () ;
 			this.Repaint () ;

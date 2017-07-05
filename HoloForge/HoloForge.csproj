@@ -79,11 +79,18 @@
     <Reference Include="Mono.Cecil">
       <HintPath>Library\UnityAssemblies\Mono.Cecil.dll</HintPath>
     </Reference>
+    <Reference Include="UnityEditor.iOS.Extensions.Xcode">
+      <HintPath>Library\UnityAssemblies\UnityEditor.iOS.Extensions.Xcode.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEditor.iOS.Extensions.Common">
+      <HintPath>Library\UnityAssemblies\UnityEditor.iOS.Extensions.Common.dll</HintPath>
+    </Reference>
     <Reference Include="ICSharpCode.SharpZipLib">
       <HintPath>Assets\SimpleJSON\plugins\ICSharpCode.SharpZipLib.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Forge\BIM4D\BIM4DSpeechManager.cs" />
     <Compile Include="Assets\Forge\Explode\Explode.cs" />
     <Compile Include="Assets\Forge\ForgeConstants.cs" />
     <Compile Include="Assets\Forge\ForgeSceneInit.cs" />

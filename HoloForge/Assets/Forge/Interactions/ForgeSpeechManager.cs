@@ -25,7 +25,8 @@ public class ForgeSpeechManager : Singleton<ForgeSpeechManager> {
 			_tooltip =GameObject.Find (ForgeConstants.TOOLTIPPATH) ;
 		if ( _holoMenu == null )
 			_holoMenu =GameObject.Find (ForgeConstants.MENUPATH) ;
-		ToggleMenuVisibility () ; // Hide Menu when we start
+		//ToggleMenuVisibility () ; // Hide Menu when we start
+		//TogglePropertiesVisibility () ; // Hide Properties when we start
 		InitSelectionShader () ;
 		InitExplodeEngine () ;
 	}
@@ -80,7 +81,7 @@ public class ForgeSpeechManager : Singleton<ForgeSpeechManager> {
 		_keywords.Add ("Combine", Combine) ;
 		_keywords.Add ("Reset", Reset) ;
 		// properties
-		_keywords.Add ("Properties", Properties) ;
+		_keywords.Add ("Properties", TogglePropertiesVisibility) ;
 
 		_keywordRecognizer =new KeywordRecognizer (_keywords.Keys.ToArray ()) ;
 		_keywordRecognizer.OnPhraseRecognized +=KeywordRecognizer_OnPhraseRecognized ;
@@ -136,6 +137,18 @@ public class ForgeSpeechManager : Singleton<ForgeSpeechManager> {
 			sceneName,
 			UnityEngine.SceneManagement.LoadSceneMode.Single
 		) ;
+	}
+
+	#endregion
+
+	#region Properties
+	public GameObject _holoProperties =null ;
+
+	public void TogglePropertiesVisibility () {
+		if ( _holoProperties == null )
+			return ;
+		_holoProperties.SetActive (!_holoProperties.activeSelf) ;
+		_holoProperties.transform.position =Camera.main.transform.position + Camera.main.transform.forward ;
 	}
 
 	#endregion
@@ -451,13 +464,6 @@ public class ForgeSpeechManager : Singleton<ForgeSpeechManager> {
 		}
 		// explode
 		Combine () ;
-	}
-
-	#endregion
-
-	#region Properties
-	public void Properties () {
-
 	}
 
 	#endregion

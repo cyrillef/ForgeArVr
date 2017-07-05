@@ -36,7 +36,7 @@ public class ForgeSceneInit /*: EditorWindow*/ {
 	protected static Camera InitCamera () {
 		//Scene scene =EditorSceneManager.GetActiveScene () ;
 		if ( Camera.main != null && Camera.main.name != ForgeConstants.CAMERA )
-			GameObject.DestroyImmediate (Camera.main) ;
+			GameObject.DestroyImmediate (Camera.main.gameObject) ;
 		if ( Camera.main == null ) {
 			string path ="Assets/Toolkit/Utilities/Prefabs/Main Camera.prefab" ;
 			Object obj =AssetDatabase.LoadAssetAtPath<GameObject> (path) as Object ;

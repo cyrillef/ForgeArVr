@@ -165,7 +165,7 @@ public partial class ForgeImport {
 	public static GameObject AutoScale (GameObject root, bool autoScale) {
 		// Auto Scale node
 		GameObject autoScaleNode =new GameObject ("Auto Scale") ;
-		for ( int i =0 ; i < root.transform.childCount && autoScale ; i++ )
+		for ( int i =root.transform.childCount - 1 ; i >= 0 && autoScale ; i-- )
 			root.transform.GetChild (i).transform.parent =autoScaleNode.transform ;
 		autoScaleNode.transform.parent =root.transform ;
 
